@@ -1,9 +1,9 @@
-const AdminDashborad = () => {
+const AdminDashboard = () => {
   return (
     <div>
-      <h1>admin dashborad</h1>
+      <h1> This is AdminDashboard component </h1>
     </div>
   );
 };
 
-export default AdminDashborad;
+export default AdminDashboard;
