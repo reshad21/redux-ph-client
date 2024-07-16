@@ -1,4 +1,5 @@
 import { Layout, Menu } from "antd";
+import { selectCurrentUser } from "../../redux/features/auth/authSlice";
 import { useAppSelector } from "../../redux/hooks";
 import { adminPaths } from "../../routes/admin.routes";
 import { facultyPaths } from "../../routes/faculty.routes";
@@ -8,21 +9,17 @@ import { sidebarItemsGenerator } from "../../utils/sidebarItemsGenerator";
 const { Sider } = Layout;
 
 const userRole = {
-  SUPERADMIN: "superAdmin",
   ADMIN: "admin",
   FACULTY: "faculty",
   STUDENT: "student",
 };
 
 const Sidebar = () => {
-  const user = useAppSelector((state) => state.auth.user);
-  // const role = "admin";
+  const user = useAppSelector(selectCurrentUser);
+
   let sidebarItems;
 
   switch (user!.role) {
-    case userRole.SUPERADMIN:
-      sidebarItems = sidebarItemsGenerator(adminPaths, userRole.SUPERADMIN);
-      break;
     case userRole.ADMIN:
       sidebarItems = sidebarItemsGenerator(adminPaths, userRole.ADMIN);
       break;
@@ -38,7 +35,11 @@ const Sidebar = () => {
   }
 
   return (
-    <Sider breakpoint="lg" collapsedWidth="0">
+    <Sider
+      breakpoint="lg"
+      collapsedWidth="0"
+      style={{ height: "100vh", position: "sticky", top: "0", left: "0" }}
+    >
       <div
         style={{
           color: "white",

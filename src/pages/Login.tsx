@@ -14,14 +14,14 @@ const Login = () => {
   const dispatch = useAppDispatch();
   // const { register, handleSubmit } = useForm({
   //   defaultValues: {
-  //     userId: '0001',
-  //     password: 'admin12345',
+  //     userId: 'A-0002',
+  //     password: 'admin123',
   //   },
   // });
 
   const defaultValues = {
-    userId: "0001",
-    password: "admin12345",
+    userId: "A-0001",
+    password: "admin123",
   };
 
   const [login] = useLoginMutation();
